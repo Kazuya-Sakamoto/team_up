@@ -24,3 +24,5 @@ server_side/logs
 
 .env
 .devcontainer
+
+server_side/server_side
