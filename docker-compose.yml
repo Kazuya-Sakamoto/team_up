@@ -37,17 +37,18 @@ services:
       context: ./docker_files/db_mysql
     container_name: teamup_testdb
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_TEST_DATABASE: ${MYSQL_TEST_DATABASE}
+      MYSQL_TEST_USER: ${MYSQL_TEST_USER}
+      MYSQL_TEST_PASSWORD: ${MYSQL_TEST_PASSWORD}
+      MYSQL_ROOT_TEST_PASSWORD: ${MYSQL_ROOT_TEST_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     restart: on-failure:5
     ports:
       - '3307:3306'
     tty: true
     volumes:
       - ./docker_files/db_mysql/mysql_init:/docker-entrypoint-initdb.d
-      - ./docker_files/db_mysql/mysql_data:/var/lib/mysql
+      - ./docker_files/db_mysql/mysql_testdata:/var/lib/mysql
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --skip-character-set-client-handshake
     networks:
       - teamupnet

@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "userName": "つばさ",
+      "genderTypeId": 1
+    },
+    {
+      "userName": "ともみ",
+      "genderTypeId": 2
+    },
+    {
+      "userName": "たけし",
+      "genderTypeId": 1
+    },
+    {
+      "userName": "ともよ",
+      "genderTypeId": 2
+    }
+  ]
+}

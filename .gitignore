@@ -16,6 +16,7 @@
 
 
 mysql_data
+mysql_testdata
 
 commentsRouter_____________go_src_app_team_up_controllers.go
 commentsRouter______________________go_src_app_team_up_controllers.go
