@@ -13,3 +13,19 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+
+mysql_data
+
+node_modules
+.node_version
+client/.cache
+.DS_Store
+
+commentsRouter_____________go_src_app_team_up_controllers.go
+commentsRouter______________________go_src_app_team_up_controllers.go
+
+conf/app.conf
+.env
+
+logs
