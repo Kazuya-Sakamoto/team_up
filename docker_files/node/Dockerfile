@@ -1,4 +1,4 @@
-FROM node:12.16.1-alpine
-WORKDIR /var/www
+# FROM node:12.16.1-alpine
+# WORKDIR /var/www
 
-RUN apk add git
+# RUN apk add git
