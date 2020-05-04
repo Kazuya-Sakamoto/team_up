@@ -17,6 +17,7 @@
 mysql_data
 mysql_testdata
 
+server_side/server_side
 server_side/routers/commentsRouter_controllers.go
 server_side/conf/app.conf
 server_side/lastupdate.tmp
@@ -24,5 +25,3 @@ server_side/logs
 
 .env
 .devcontainer
-
-server_side/server_side
