@@ -1,18 +1,18 @@
 version: '3'
 services:
-  node:
-    build:
-      context: ./docker_files/node
-    container_name: teamup_client
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./client:/var/www/client
-    environment:
-      - NODE_ENV=development
-    tty: true
-    networks:
-      - teamupnet
+  # node:
+  #   build:
+  #     context: ./docker_files/node
+  #   container_name: teamup_client
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - ./client:/var/www/client
+  #   environment:
+  #     - NODE_ENV=development
+  #   tty: true
+  #   networks:
+  #     - teamupnet
   db:
     build:
       context: ./docker_files/db_mysql
