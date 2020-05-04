@@ -25,3 +25,5 @@ server_side/conf/app.conf
 .env
 
 server_side/logs
+
+.devcontainer
