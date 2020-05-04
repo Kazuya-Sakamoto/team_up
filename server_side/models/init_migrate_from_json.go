@@ -14,7 +14,9 @@ import (
 
 //Init ...
 type Init struct {
-	User []*User `json:"user"`
+	User        []*User        `json:"user"`
+	AccessRight []*AccessRight `json:"accessRight"`
+	Role []*Role `json:"role"`
 }
 
 //BaseDirectory is project directory
@@ -46,6 +48,16 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 	json.Unmarshal(initJSONByte, &init)
 
 	for _, m := range init.User {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.AccessRight {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.Role {
 		if err = tx.Create(&m).Error; err != nil {
 			return err
 		}

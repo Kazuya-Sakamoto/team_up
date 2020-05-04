@@ -6,6 +6,8 @@ type User struct {
 	UserName      string `gorm:"" json:"userName"`
 	LoginName     string `gorm:"" json:"loginName"`
 	LoginPassword string `gorm:"" json:"loginPassword"`
+	RoleID        int64  `gorm:"" json:"roleId"`
+	Role          *Role  `gorm:"" json:"role"`
 }
 
 // CreateUser ...
