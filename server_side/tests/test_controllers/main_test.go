@@ -9,7 +9,6 @@ import (
 
 	"app/server_side/models"
 	_ "app/server_side/routers"
-	"app/server_side/services"
 	_ "path/filepath"
 
 	// "github.com/astaxie/beego/httplib"
@@ -34,7 +33,7 @@ func TestMain(m *testing.M) {
 	beego.TestBeegoInit(apppath)
 
 	db = models.InitTestDataBase()
-	db = services.InitTestDataBase()
+	// db = services.InitTestDataBase()
 	os.Exit(m.Run())
 }
 

@@ -1,0 +1,26 @@
+{
+  "role": [
+    {
+      "roleName": "MOP",
+      "accessRights": [{ "accessRightName": "MOP" }]
+    },
+    {
+      "roleName": "SOP",
+      "accessRights": [{ "accessRightName": "SOP" }]
+    },
+    {
+      "roleName": "MOP+MDM",
+      "accessRights": [
+        { "accessRightName": "MOP" },
+        { "accessRightName": "MDM" }
+      ]
+    },
+    {
+      "roleName": "SOP+MDM",
+      "accessRights": [
+        { "accessRightName": "SOP" },
+        { "accessRightName": "MDM" }
+      ]
+    }
+  ]
+}

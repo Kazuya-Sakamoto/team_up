@@ -14,16 +14,21 @@ func init() {
 				&controllers.UserController{},
 			),
 		),
-		beego.NSNamespace("/access_right",
+		beego.NSNamespace("/job",
 			beego.NSInclude(
-				&controllers.AccessRightController{},
+				&controllers.JobController{},
 			),
 		),
-		beego.NSNamespace("/role",
-			beego.NSInclude(
-				&controllers.RoleController{},
-			),
-		),
+		// beego.NSNamespace("/access_right",
+		// 	beego.NSInclude(
+		// 		&controllers.AccessRightController{},
+		// 	),
+		// ),
+		// beego.NSNamespace("/role",
+		// 	beego.NSInclude(
+		// 		&controllers.RoleController{},
+		// 	),
+		// ),
 	)
 	beego.AddNamespace(ns)
 }

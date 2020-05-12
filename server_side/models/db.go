@@ -25,7 +25,7 @@ func init() {
 //InitTestDataBase ...
 //For testmodel to use test database
 func InitTestDataBase() *gorm.DB {
-	initDB("test_db", true)
+	initDB("teamup_testdb", true)
 	return db
 }
 

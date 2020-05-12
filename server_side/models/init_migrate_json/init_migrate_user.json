@@ -2,19 +2,23 @@
   "user": [
     {
       "userName": "つばさ",
-      "genderTypeId": 1
+      "genderTypeId": 1,
+      "roleId": 1
     },
     {
       "userName": "ともみ",
-      "genderTypeId": 2
+      "genderTypeId": 2,
+      "roleId": 2
     },
     {
       "userName": "たけし",
-      "genderTypeId": 1
+      "genderTypeId": 1,
+      "roleId": 3
     },
     {
       "userName": "ともよ",
-      "genderTypeId": 2
+      "genderTypeId": 2,
+      "roleId": 4
     }
   ]
 }

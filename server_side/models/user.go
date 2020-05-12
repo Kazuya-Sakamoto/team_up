@@ -1,13 +1,21 @@
 package models
 
+import "time"
+
 // User ...
 type User struct {
 	Model
-	UserName      string `gorm:"" json:"userName"`
-	LoginName     string `gorm:"" json:"loginName"`
-	LoginPassword string `gorm:"" json:"loginPassword"`
-	RoleID        int64  `gorm:"" json:"roleId"`
-	Role          *Role  `gorm:"" json:"role"`
+	UserName          string    `gorm:"" json:"userName"`          // ログイン名
+	UserBirthday      time.Time `gorm:"" json:"userBirthday"`      // ログインパスワード
+	LoginName         string    `gorm:"" json:"loginName"`         // 氏名
+	LoginPassword     string    `gorm:"" json:"loginPassword"`     // 生年月日
+	Bio               string    `gorm:"" json:"bio"`               // 自己紹介文
+	GithubAccount     string    `gorm:"" json:"githubAccount"`     // Githubアカウント
+	TwitterAccount    string    `gorm:"" json:"twitterAccount"`    // Twitterアカウント
+	LearningStartDate time.Time `gorm:"" json:"learningStartDate"` // 学習開始日
+
+	// RoleID        int64  `gorm:"" json:"roleId"`
+	// Role          *Role  `gorm:"" json:"role"`
 }
 
 // CreateUser ...
@@ -18,7 +26,7 @@ func CreateUser(user User) (UserID int64, err error) {
 
 // GetUser ...
 func GetUser(UserID int64) (user User, err error) {
-	err = db.First(&user, UserID).Error
+	err = db.Set("gorm:auto_preload", true).First(&user, UserID).Error
 	return user, err
 }
 
@@ -31,15 +39,22 @@ func GetUserByLoginName(LoginName string) (user *User, err error) {
 
 // GetAllUsers ...
 func GetAllUsers(limit int64, offset int64) (ml []*User, err error) {
-	tx := db.Begin()
+	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if limit != 0 {
 		tx = tx.Limit(limit)
 	} else {
 		var count int64
-		db.Model(&ml).Count(&count)
+		tx.Model(&ml).Count(&count)
 		tx = tx.Limit(count)
 	}
+
+	// 関連テーブルを抽出条件に含める例
+	// tx = tx.
+	// 	Joins("JOIN roles ON roles.id = role_id").
+	// 	Joins("JOIN role_access_rights ON role_access_rights.role_id = roles.id").
+	// 	Joins("JOIN access_rights ON role_access_rights.access_right_id = access_rights.id").
+	// 	Where("access_rights.access_right_name = ?", "MOP")
 
 	err = tx.Offset(offset).Find(&ml).Commit().Error
 

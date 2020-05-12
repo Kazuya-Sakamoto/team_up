@@ -54,8 +54,9 @@ func initMigrate() {
 		// add tables
 		err := tx.AutoMigrate(
 			&User{},
-			&AccessRight{},
-			&Role{},
+			&Job{},
+			// &AccessRight{},
+			// &Role{},
 
 			// //History Tables
 			// &StaffHistory{},
