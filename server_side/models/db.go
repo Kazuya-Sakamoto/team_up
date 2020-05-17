@@ -5,10 +5,11 @@ import (
 	"time"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 	"github.com/jinzhu/gorm"
 	"github.com/natefinch/lumberjack"
 
-	// BrankImportForTes
+	// BrankImportForTest
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
@@ -32,15 +33,16 @@ func InitTestDataBase() *gorm.DB {
 func initDB(dBName string, test bool) {
 	// set default database
 	host := beego.AppConfig.String("DBHost")
-	// if host != "" {
-	// 	host = "(" + host + ")"
-	// }
+	if host != "" {
+		host = "(" + host + ")"
+	}
 	user := beego.AppConfig.String("DBUser")
 	pass := beego.AppConfig.String("DBPassword")
 	var err error
 	// 全体のタイムゾーンを変更
 	time.Local, err = time.LoadLocation("Asia/Tokyo")
 	if err != nil {
+		logs.Error(err)
 		log.Fatal(err)
 	}
 	sqlconn := beego.AppConfig.String("sqlconn")
@@ -50,6 +52,7 @@ func initDB(dBName string, test bool) {
 	db, err = gorm.Open(sqlconn, user+":"+pass+"@"+host+"/"+dBName+"?charset=utf8mb4&parseTime=True&loc=Local")
 	DB = db
 	if err != nil {
+		logs.Error(err)
 		log.Fatal(err)
 	}
 
@@ -76,6 +79,7 @@ func initDB(dBName string, test bool) {
 	initMigrate()
 	//}
 	if err = m.Migrate(); err != nil {
+		logs.Error(err)
 		log.Fatal(err)
 	}
 	log.Println("migration finished.")
