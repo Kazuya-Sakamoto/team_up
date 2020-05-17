@@ -1,0 +1,40 @@
+{
+  "job": [
+    {
+      "jobTitle": "Rubyエンジニア募集",
+      "recruitmentNumbers": 2,
+      "devStartDate": "2020-04-01T00:00:00+09:00",
+      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "jobDescription": "Ruby好き集まれ！",
+      "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "useMenter": true
+    },
+    {
+      "jobTitle": "Pythonエンジニア募集",
+      "recruitmentNumbers": 3,
+      "devStartDate": "2020-04-01T00:00:00+09:00",
+      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "jobDescription": "Python好き集まれ！",
+      "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "useMenter": true
+    },
+    {
+      "jobTitle": "Goエンジニア募集",
+      "recruitmentNumbers": 4,
+      "devStartDate": "2020-04-01T00:00:00+09:00",
+      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "jobDescription": "Go好き集まれ！",
+      "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "useMenter": true
+    },
+    {
+      "jobTitle": "フロントエンジニア募集",
+      "recruitmentNumbers": 5,
+      "devStartDate": "2020-04-01T00:00:00+09:00",
+      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "jobDescription": "フロント好き集まれ！",
+      "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "useMenter": true
+    }
+  ]
+}

@@ -1,24 +1,44 @@
 {
   "user": [
     {
-      "userName": "つばさ",
-      "genderTypeId": 1,
-      "roleId": 1
+      "loginName": "admin1",
+      "loginPassword": "password1",
+      "userName": "user1",
+      "userBirthday": "2020-04-01T00:00:00+09:00",
+      "bio": "よろしくお願いします！",
+      "githubAccount": "https://github.com",
+      "twitterAccount": "https://twitter.com",
+      "learningStartDate": "2020-04-01T00:00:00+09:00"
     },
     {
-      "userName": "ともみ",
-      "genderTypeId": 2,
-      "roleId": 2
+      "loginName": "admin2",
+      "loginPassword": "password2",
+      "userName": "user2",
+      "userBirthday": "2020-04-01T00:00:00+09:00",
+      "bio": "よろしくお願いします！",
+      "githubAccount": "https://github.com",
+      "twitterAccount": "https://twitter.com",
+      "learningStartDate": "2020-04-01T00:00:00+09:00"
     },
     {
-      "userName": "たけし",
-      "genderTypeId": 1,
-      "roleId": 3
+      "loginName": "admin3",
+      "loginPassword": "password3",
+      "userName": "user3",
+      "userBirthday": "2020-04-01T00:00:00+09:00",
+      "bio": "よろしくお願いします！",
+      "githubAccount": "https://github.com",
+      "twitterAccount": "https://twitter.com",
+      "learningStartDate": "2020-04-01T00:00:00+09:00"
     },
     {
-      "userName": "ともよ",
-      "genderTypeId": 2,
-      "roleId": 4
+      "loginName": "admin4",
+      "loginPassword": "password4",
+      "userName": "user4",
+      "userBirthday": "2020-04-01T00:00:00+09:00",
+      "bio": "よろしくお願いします！",
+      "githubAccount": "https://github.com",
+      "twitterAccount": "https://twitter.com",
+      "learningStartDate": "2020-04-01T00:00:00+09:00"
     }
   ]
 }

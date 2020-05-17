@@ -5,10 +5,10 @@ import "time"
 // User ...
 type User struct {
 	Model
-	UserName          string    `gorm:"" json:"userName"`          // ログイン名
-	UserBirthday      time.Time `gorm:"" json:"userBirthday"`      // ログインパスワード
-	LoginName         string    `gorm:"" json:"loginName"`         // 氏名
-	LoginPassword     string    `gorm:"" json:"loginPassword"`     // 生年月日
+	LoginName         string    `gorm:"" json:"loginName"`         // ログイン名
+	LoginPassword     string    `gorm:"" json:"loginPassword"`     // ログインパスワード
+	UserName          string    `gorm:"" json:"userName"`          // ユーザー名
+	UserBirthday      time.Time `gorm:"" json:"userBirthday"`      // 生年月日
 	Bio               string    `gorm:"" json:"bio"`               // 自己紹介文
 	GithubAccount     string    `gorm:"" json:"githubAccount"`     // Githubアカウント
 	TwitterAccount    string    `gorm:"" json:"twitterAccount"`    // Twitterアカウント
