@@ -71,3 +71,4 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 
 	return nil
 }
+
