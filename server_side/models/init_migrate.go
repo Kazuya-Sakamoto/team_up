@@ -55,6 +55,7 @@ func initMigrate() {
 		err := tx.AutoMigrate(
 			&User{},
 			&Job{},
+			&UserAuthInfo{},
 			// &AccessRight{},
 			// &Role{},
 

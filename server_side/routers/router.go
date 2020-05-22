@@ -9,9 +9,19 @@ import (
 func init() {
 	beego.Router("/", &controllers.MainController{})
 	ns := beego.NewNamespace("/api/v1",
+		beego.NSNamespace("/login",
+			beego.NSInclude(
+				&controllers.LoginController{},
+			),
+		),
 		beego.NSNamespace("/user",
 			beego.NSInclude(
 				&controllers.UserController{},
+			),
+		),
+		beego.NSNamespace("/signup",
+			beego.NSInclude(
+				&controllers.SignupController{},
 			),
 		),
 		beego.NSNamespace("/job",

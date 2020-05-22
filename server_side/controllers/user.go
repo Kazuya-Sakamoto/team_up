@@ -21,33 +21,33 @@ func (c *UserController) URLMapping() {
 	c.Mapping("Delete", c.Delete)
 }
 
-//Post User
-// @Title Post
-// @Description create User
-// @Param  body        body    models.User   true        "body for post content"
-// @Success 201 {int} models.User.Id
-// @Failure 403 body is empty
-// @router / [post]
-func (c *UserController) Post() {
-	defer c.HandlePanic()
-	var user models.User
-	err := json.Unmarshal(c.Ctx.Input.RequestBody, &user)
-	if err != nil {
-		c.Ctx.ResponseWriter.WriteHeader(403)
-		c.Data["json"] = err.Error()
-		c.ServeJSON()
-		return
-	}
-	userID, err := models.CreateUser(user)
-	if err != nil {
-		c.Data["json"] = err.Error()
-		c.Ctx.ResponseWriter.WriteHeader(403)
-	} else {
-		c.Data["json"] = map[string]int64{"userId": userID}
-		c.Ctx.Output.SetStatus(201)
-	}
-	c.ServeJSON()
-}
+// //Post User
+// // @Title Post
+// // @Description create User
+// // @Param  body        body    models.User   true        "body for post content"
+// // @Success 201 {int} models.User.Id
+// // @Failure 403 body is empty
+// // @router / [post]
+// func (c *UserController) Post() {
+// 	defer c.HandlePanic()
+// 	var user models.User
+// 	err := json.Unmarshal(c.Ctx.Input.RequestBody, &user)
+// 	if err != nil {
+// 		c.Ctx.ResponseWriter.WriteHeader(403)
+// 		c.Data["json"] = err.Error()
+// 		c.ServeJSON()
+// 		return
+// 	}
+// 	userID, err := models.CreateUser(user)
+// 	if err != nil {
+// 		c.Data["json"] = err.Error()
+// 		c.Ctx.ResponseWriter.WriteHeader(403)
+// 	} else {
+// 		c.Data["json"] = map[string]int64{"userId": userID}
+// 		c.Ctx.Output.SetStatus(201)
+// 	}
+// 	c.ServeJSON()
+// }
 
 //GetAll Users
 // @Title GetAll

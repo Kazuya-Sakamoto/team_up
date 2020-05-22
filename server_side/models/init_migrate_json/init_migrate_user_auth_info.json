@@ -1,0 +1,24 @@
+{
+  "userAuthInfo": [
+    {
+      "userId": 1,
+      "loginName": "admin1",
+      "loginPassword": "$2a$10$ZPXoU8umxbq6IF4g6A/X5.flWpE2qv5XryQYv9x0LgJBcyKBCUomG"
+    },
+    {
+      "userId": 2,
+      "loginName": "admin2",
+      "loginPassword": "$2a$10$6.Ucz8l26BEPN1loZSrNqe8X1g1itUaT9BlHR.y0qDHBeuXYa/GQO"
+    },
+    {
+      "userId": 3,
+      "loginName": "admin3",
+      "loginPassword": "$2a$10$iCWJ1amtZ/qzYpwhksMTuOHahey5qeikOJ.pM5smqETwp2oMFdETK"
+    },
+    {
+      "userId": 4,
+      "loginName": "admin4",
+      "loginPassword": "$2a$10$UEGSHkUjoY7uIgWajewDtepiBvIiEKd3OJZhpDi9Yq6xdJFJQao22"
+    }
+  ]
+}

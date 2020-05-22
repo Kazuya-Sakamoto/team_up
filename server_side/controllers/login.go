@@ -2,9 +2,8 @@ package controllers
 
 import (
 	//"fmt"
+	"app/server_side/services"
 	"encoding/json"
-
-	"app/server_side/models"
 
 	"golang.org/x/crypto/bcrypt"
 
@@ -21,8 +20,8 @@ type LoginController struct {
 //Post Login
 // @Title Login
 // @Description login
-// @Param	body		body 	models.Staff	true		"body for staff content"
-// @Success 200 {int} models.Staff.ID
+// @Param	body		body 	models.User	true		"body for user content"
+// @Success 200 {int} models.User.ID
 // @Failure 403 body is empty
 // @router / [post]
 func (lc *LoginController) Post() {
@@ -32,16 +31,16 @@ func (lc *LoginController) Post() {
 	}
 
 	session := lc.StartSession()
-	staffID := session.Get("staffID")
-	if staffID != nil {
+	userID := session.Get("userID")
+	if userID != nil {
 		// UserID is not set, display another page
 		lc.Ctx.WriteString("Already login.")
 		return
 	}
 
 	// id/passwordを受け取る
-	var requestStaff interface{}
-	err := json.Unmarshal(lc.Ctx.Input.RequestBody, &requestStaff)
+	var requestUser interface{}
+	err := json.Unmarshal(lc.Ctx.Input.RequestBody, &requestUser)
 	if err != nil {
 		lc.Ctx.ResponseWriter.WriteHeader(403)
 		lc.Data["json"] = err.Error()
@@ -49,26 +48,26 @@ func (lc *LoginController) Post() {
 		return
 	}
 
-	requestLoginName := requestStaff.(map[string]interface{})["loginName"].(string)
-	requestLoginPassword := requestStaff.(map[string]interface{})["loginPassword"].(string)
-	// stuffデータを取得する
-	targetStaff, err := models.GetUserByLoginName(requestLoginName)
+	requestLoginName := requestUser.(map[string]interface{})["loginName"].(string)
+	requestLoginPassword := requestUser.(map[string]interface{})["loginPassword"].(string)
+	// userデータを取得する
+	targetUser, err := services.PostMethodLogin(requestLoginName)
 	if err != nil {
-		// staffの名前がまちがっていることをフロントに渡す
+		// userの名前がまちがっていることをフロントに渡す
 		//lc.Ctx.WriteString("ng")
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	}
 
 	// パスワードの比較
-	err = bcrypt.CompareHashAndPassword([]byte(targetStaff.LoginPassword), []byte(requestLoginPassword))
+	err = bcrypt.CompareHashAndPassword([]byte(targetUser.LoginPassword), []byte(requestLoginPassword))
 	if err != nil {
 		//lc.Ctx.WriteString("ng")
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	} else {
 		//lc.Ctx.WriteString("ok")
 		session := lc.StartSession()
-		session.Set("staffID", targetStaff.ID)
-		lc.Data["json"] = targetStaff
+		session.Set("userID", targetUser.ID)
+		lc.Data["json"] = targetUser
 		lc.ServeJSON()
 	}
 }
@@ -76,8 +75,8 @@ func (lc *LoginController) Post() {
 //GetOut ...
 // @Title Logout
 // @Description logout
-// @Param	body		body 	models.Staff	true		"body for staff content"
-// @Success 200 {int} models.Staff.ID
+// @Param	body		body 	models.User	true		"body for user content"
+// @Success 200 {int} models.User.ID
 // @Failure 403 body is empty
 // @router /logout [get]
 func (lc *LoginController) GetOut() {
@@ -87,14 +86,14 @@ func (lc *LoginController) GetOut() {
 	}
 
 	session := lc.StartSession()
-	staffID := session.Get("staffID")
-	if staffID == nil {
+	userID := session.Get("userID")
+	if userID == nil {
 		// UserID is not set, display another page
 		// TODO: change to login page(controller)
 		lc.Ctx.WriteString("Already logout.")
 		return
 	}
-	session.Delete("staffID")
+	session.Delete("userID")
 	lc.Ctx.WriteString("Finished Logout.")
 	return
 }

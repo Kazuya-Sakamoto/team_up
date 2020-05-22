@@ -14,8 +14,9 @@ import (
 
 //Init ...
 type Init struct {
-	User []*User `json:"user"`
-	Job  []*Job  `json:"job"`
+	User         []*User         `json:"user"`
+	Job          []*Job          `json:"job"`
+	UserAuthInfo []*UserAuthInfo `json:"userAuthInfo"`
 	// AccessRight []*AccessRight `json:"accessRight"`
 	// Role        []*Role        `json:"role"`
 }
@@ -54,6 +55,11 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 		}
 	}
 	for _, m := range init.Job {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.UserAuthInfo {
 		if err = tx.Create(&m).Error; err != nil {
 			return err
 		}

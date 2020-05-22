@@ -8,3 +8,25 @@
 4．`docker exec -it teamup_server bash`でコンテナ内へ  
 5．`cd server_side`で server_side ディレクトリへ移動  
 6．`bee run`でアプリケーションを起動
+
+## テストユーザー
+
+＜テストユーザー ① ＞  
+・ユーザー名：user1  
+・ログイン名：admin1  
+・パスワード：password1
+
+＜テストユーザー ② ＞  
+・ユーザー名：user2  
+・ログイン名：admin2  
+・パスワード：password2
+
+＜テストユーザー ③ ＞  
+・ユーザー名：user3  
+・ログイン名：admin3  
+・パスワード：password3
+
+＜テストユーザー ④ ＞  
+・ユーザー名：user4  
+・ログイン名：admin4  
+・パスワード：password4
