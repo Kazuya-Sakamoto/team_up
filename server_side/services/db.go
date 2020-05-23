@@ -8,9 +8,9 @@ import (
 
 var db *gorm.DB
 
-// func init() {
-// 	initDB("teamup")
-// }
+func init() {
+	initDB("teamup")
+}
 
 // InitTestDataBase ...
 func InitTestDataBase() *gorm.DB {
@@ -18,6 +18,6 @@ func InitTestDataBase() *gorm.DB {
 	return db
 }
 
-// func initDB(dbName string) {
-// 	db = models.DB
-// }
+func initDB(dbName string) {
+	db = models.DB
+}
