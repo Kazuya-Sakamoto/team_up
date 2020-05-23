@@ -1,0 +1,19 @@
+{
+  "skill": [
+    {
+      "skillName": "docker"
+    },
+    {
+      "skillName": "AWS"
+    },
+    {
+      "skillName": "GCP"
+    },
+    {
+      "skillName": "MySQL"
+    },
+    {
+      "skillName": "teraform"
+    }
+  ]
+}

@@ -36,3 +36,15 @@ package models
 // 	err = tx.Offset(offset).Find(&ml).Commit().Error
 // 	return
 // }
+
+// // UpdateAccessRight ...
+// func UpdateAccessRight(AccessRightID int64, accessRight *AccessRight) (err error) {
+// 	err = db.Model(&AccessRight{Model: Model{ID: AccessRightID}}).Update(accessRight).Error
+// 	return
+// }
+
+// // DeleteAccessRight ...
+// func DeleteAccessRight(AccessRightID int64) (err error) {
+// 	err = db.Delete(&AccessRight{Model: Model{ID: AccessRightID}}).Error
+// 	return
+// }

@@ -29,6 +29,41 @@ func init() {
 				&controllers.JobController{},
 			),
 		),
+		beego.NSNamespace("/programing_language",
+			beego.NSInclude(
+				&controllers.ProgramingLanguageController{},
+			),
+		),
+		beego.NSNamespace("/programing_framework",
+			beego.NSInclude(
+				&controllers.ProgramingFrameworkController{},
+			),
+		),
+		beego.NSNamespace("/skill",
+			beego.NSInclude(
+				&controllers.SkillController{},
+			),
+		),
+		beego.NSNamespace("/communication_tool",
+			beego.NSInclude(
+				&controllers.SkillController{},
+			),
+		),
+		beego.NSNamespace("/position_tag",
+			beego.NSInclude(
+				&controllers.PositionTagController{},
+			),
+		),
+		beego.NSNamespace("/job_status",
+			beego.NSInclude(
+				&controllers.JobStatusController{},
+			),
+		),
+		beego.NSNamespace("/individual_portfolio",
+			beego.NSInclude(
+				&controllers.IndividualPortfolioController{},
+			),
+		),
 		// beego.NSNamespace("/access_right",
 		// 	beego.NSInclude(
 		// 		&controllers.AccessRightController{},

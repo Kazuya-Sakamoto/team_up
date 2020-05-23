@@ -56,6 +56,13 @@ func initMigrate() {
 			&User{},
 			&Job{},
 			&UserAuthInfo{},
+			&ProgramingLanguage{},
+			&ProgramingFramework{},
+			&Skill{},
+			&CommunicationTool{},
+			&PositionTag{},
+			&JobStatus{},
+			&IndividualPortfolio{},
 			// &AccessRight{},
 			// &Role{},
 

@@ -14,9 +14,16 @@ import (
 
 //Init ...
 type Init struct {
-	User         []*User         `json:"user"`
-	Job          []*Job          `json:"job"`
-	UserAuthInfo []*UserAuthInfo `json:"userAuthInfo"`
+	User                []*User                `json:"user"`
+	Job                 []*Job                 `json:"job"`
+	UserAuthInfo        []*UserAuthInfo        `json:"userAuthInfo"`
+	ProgramingLanguage  []*ProgramingLanguage  `json:"programingLanguage"`
+	ProgramingFramework []*ProgramingFramework `json:"programingFramework"`
+	Skill               []*Skill               `json:"skill"`
+	CommunicationTool   []*CommunicationTool   `json:"communicationTool"`
+	PositionTag         []*PositionTag         `json:"positionTag"`
+	JobStatus           []*JobStatus           `json:"jobStatus"`
+	IndividualPortfolio []*IndividualPortfolio `json:"individualPortfolio"`
 	// AccessRight []*AccessRight `json:"accessRight"`
 	// Role        []*Role        `json:"role"`
 }
@@ -60,6 +67,41 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 		}
 	}
 	for _, m := range init.UserAuthInfo {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.ProgramingLanguage {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.ProgramingFramework {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.Skill {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.CommunicationTool {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.PositionTag {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.JobStatus {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.IndividualPortfolio {
 		if err = tx.Create(&m).Error; err != nil {
 			return err
 		}
