@@ -21,7 +21,6 @@ type SignupController struct {
 // @Failure 403 body is empty
 // @router / [post]
 func (lc *SignupController) Post() {
-	//パニックハンドリング
 	if r := recover(); r != nil {
 		lc.Ctx.ResponseWriter.WriteHeader(403)
 	}
@@ -29,7 +28,6 @@ func (lc *SignupController) Post() {
 	session := lc.StartSession()
 	userID := session.Get("userID")
 	if userID != nil {
-		// UserID is not set, display another page
 		lc.Ctx.WriteString("Already login.")
 		return
 	}
@@ -49,7 +47,7 @@ func (lc *SignupController) Post() {
 		lc.Data["json"] = err.Error()
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	} else {
-		session := lc.StartSession()
+		// session := lc.StartSession()
 		session.Set("userID", userID)
 		lc.Data["json"] = map[string]int64{"userId": userID.(int64)} // userIDはinterface形のためuserID.(int64)とすることでint64にCast（型変換）
 		lc.Ctx.Output.SetStatus(201)

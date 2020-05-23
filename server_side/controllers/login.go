@@ -26,8 +26,6 @@ type LoginController struct {
 // @Failure 403 body is empty
 // @router / [post]
 func (lc *LoginController) Post() {
-	log.Println("First")
-	//パニックハンドリング
 	if r := recover(); r != nil {
 		lc.Ctx.ResponseWriter.WriteHeader(403)
 	}
@@ -36,7 +34,6 @@ func (lc *LoginController) Post() {
 	userID := session.Get("userID")
 	log.Println("Session UserID", userID)
 	if userID != nil {
-		// UserID is not set, display another page
 		lc.Ctx.WriteString("Already login.")
 		return
 	}
@@ -55,23 +52,20 @@ func (lc *LoginController) Post() {
 	requestLoginPassword := requestUser.(map[string]interface{})["loginPassword"].(string)
 	log.Println("requestLoginName", requestLoginName)
 	log.Println("requestLoginPassword", requestLoginPassword)
-	// userデータを取得する
+
 	targetUser, err := services.PostMethodLogin(requestLoginName)
 	log.Println("targetUser", targetUser)
 	if err != nil {
 		// userの名前がまちがっていることをフロントに渡す
-		//lc.Ctx.WriteString("ng")
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	}
 
 	// パスワードの比較
 	err = bcrypt.CompareHashAndPassword([]byte(targetUser.LoginPassword), []byte(requestLoginPassword))
 	if err != nil {
-		//lc.Ctx.WriteString("ng")
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	} else {
-		//lc.Ctx.WriteString("ok")
-		session := lc.StartSession()
+		// session := lc.StartSession()
 		session.Set("userID", targetUser.ID)
 		lc.Data["json"] = targetUser
 		lc.ServeJSON()
