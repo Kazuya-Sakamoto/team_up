@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	//"fmt"
 	"app/server_side/services"
 	"encoding/json"
 	"log"
@@ -9,13 +8,11 @@ import (
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/astaxie/beego"
-	// "github.com/astaxie/beego/session"
 )
 
 //LoginController Operations
 type LoginController struct {
 	beego.Controller
-	// session.Store
 }
 
 //Post Login
