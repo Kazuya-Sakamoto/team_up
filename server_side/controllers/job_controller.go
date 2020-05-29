@@ -72,11 +72,14 @@ func (c *JobController) Get() {
 func (c *JobController) GetAll() {
 	defer c.HandlePanic()
 
+	var positonTagID int64
+	c.Ctx.Input.Bind(&positonTagID, "positon_tag_Id")
+
 	var limit, offset int64
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	c.getHandle(models.GetAllJobs(limit, offset))
+	c.getHandle(models.GetAllJobs(limit, offset, positonTagID))
 	c.ServeJSON()
 }
 

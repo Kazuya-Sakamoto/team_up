@@ -64,6 +64,11 @@ func init() {
 				&controllers.IndividualPortfolioController{},
 			),
 		),
+		beego.NSNamespace("/chat_message",
+			beego.NSInclude(
+				&controllers.ChatMessageController{},
+			),
+		),
 		// beego.NSNamespace("/access_right",
 		// 	beego.NSInclude(
 		// 		&controllers.AccessRightController{},

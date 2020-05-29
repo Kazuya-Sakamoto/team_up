@@ -24,6 +24,7 @@ type Init struct {
 	PositionTag         []*PositionTag         `json:"positionTag"`
 	JobStatus           []*JobStatus           `json:"jobStatus"`
 	IndividualPortfolio []*IndividualPortfolio `json:"individualPortfolio"`
+	ChatMessage         []*ChatMessage         `json:"chatMessage"`
 	// AccessRight []*AccessRight `json:"accessRight"`
 	// Role        []*Role        `json:"role"`
 }
@@ -102,6 +103,11 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 		}
 	}
 	for _, m := range init.IndividualPortfolio {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.ChatMessage {
 		if err = tx.Create(&m).Error; err != nil {
 			return err
 		}
