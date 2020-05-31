@@ -51,6 +51,22 @@ func (lc *LoginController) Post() {
 	log.Println("requestLoginName", requestLoginName)
 	log.Println("requestLoginPassword", requestLoginPassword)
 
+	// // interfaceで定義した場合（ただし、フロント側でエラーが出たため上記に修正）
+	// var requestUser interface{}
+	// err := json.Unmarshal(lc.Ctx.Input.RequestBody, &requestUser)
+	// if err != nil {
+	// 	lc.Ctx.ResponseWriter.WriteHeader(403)
+	// 	lc.Data["json"] = err.Error()
+	// 	lc.ServeJSON()
+	// 	return
+	// }
+
+	// requestLoginName := requestUser.(map[string]interface{})["loginName"].(string)
+	// requestLoginPassword := requestUser.(map[string]interface{})["loginPassword"].(string)
+	// log.Println("requestLoginName", requestLoginName)
+	// log.Println("requestLoginPassword", requestLoginPassword)
+	// // ------------------------------------------------------------
+
 	targetUser, err := services.PostMethodLogin(requestLoginName)
 	log.Println("targetUser", targetUser)
 	if err != nil {
@@ -63,7 +79,7 @@ func (lc *LoginController) Post() {
 	if err != nil {
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	} else {
-		// session := lc.StartSession()
+		session := lc.StartSession()
 		session.Set("userID", targetUser.ID)
 		lc.Data["json"] = targetUser
 		lc.ServeJSON()
