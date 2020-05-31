@@ -13,7 +13,7 @@ func (r *RequiredLoginController) Prepare() {
 	userID := session.Get("userID")
 
 	if userID == nil {
-		// r.Ctx.ResponseWriter.WriteHeader(401) // 開発中はコメントアウト
+		r.Ctx.ResponseWriter.WriteHeader(401) // 開発中はコメントアウト
 	} else {
 		r.UserID = userID.(int64)
 	}
