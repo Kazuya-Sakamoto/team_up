@@ -42,3 +42,15 @@ package models
 // 	err = tx.Offset(offset).Find(&ml).Commit().Error
 // 	return
 // }
+
+// // UpdateRole ...
+// func UpdateRole(RoleID int64, role Role) (err error) {
+// 	err = db.Model(&Role{Model: Model{ID: RoleID}}).Update(role).Error
+// 	return
+// }
+
+// // DeleteRole ...
+// func DeleteRole(RoleID int64) (err error) {
+// 	err = db.Delete(&Role{Model: Model{ID: RoleID}}).Error
+// 	return
+// }

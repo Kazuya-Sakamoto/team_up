@@ -1,8 +1,6 @@
 {
   "user": [
     {
-      "loginName": "admin1",
-      "loginPassword": "password1",
       "userName": "user1",
       "userBirthday": "2020-04-01T00:00:00+09:00",
       "bio": "よろしくお願いします！",
@@ -11,8 +9,6 @@
       "learningStartDate": "2020-04-01T00:00:00+09:00"
     },
     {
-      "loginName": "admin2",
-      "loginPassword": "password2",
       "userName": "user2",
       "userBirthday": "2020-04-01T00:00:00+09:00",
       "bio": "よろしくお願いします！",
@@ -21,8 +17,6 @@
       "learningStartDate": "2020-04-01T00:00:00+09:00"
     },
     {
-      "loginName": "admin3",
-      "loginPassword": "password3",
       "userName": "user3",
       "userBirthday": "2020-04-01T00:00:00+09:00",
       "bio": "よろしくお願いします！",
@@ -31,8 +25,6 @@
       "learningStartDate": "2020-04-01T00:00:00+09:00"
     },
     {
-      "loginName": "admin4",
-      "loginPassword": "password4",
       "userName": "user4",
       "userBirthday": "2020-04-01T00:00:00+09:00",
       "bio": "よろしくお願いします！",

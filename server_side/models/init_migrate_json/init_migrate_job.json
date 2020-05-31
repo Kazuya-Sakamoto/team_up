@@ -7,7 +7,29 @@
       "DevEndDate": "2020-04-01T00:00:00+09:00",
       "jobDescription": "Ruby好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
-      "useMenter": true
+      "useMenter": true,
+      "skill": [
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ],
+      "positionTag": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        }
+      ]
     },
     {
       "jobTitle": "Pythonエンジニア募集",
@@ -16,7 +38,29 @@
       "DevEndDate": "2020-04-01T00:00:00+09:00",
       "jobDescription": "Python好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
-      "useMenter": true
+      "useMenter": true,
+      "skill": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        }
+      ],
+      "positionTag": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        }
+      ]
     },
     {
       "jobTitle": "Goエンジニア募集",
@@ -25,7 +69,20 @@
       "DevEndDate": "2020-04-01T00:00:00+09:00",
       "jobDescription": "Go好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
-      "useMenter": true
+      "useMenter": true,
+      "skill": [
+        {
+          "id": 2
+        },
+        {
+          "id": 4
+        }
+      ],
+      "positionTag": [
+        {
+          "id": 1
+        }
+      ]
     },
     {
       "jobTitle": "フロントエンジニア募集",
@@ -34,7 +91,23 @@
       "DevEndDate": "2020-04-01T00:00:00+09:00",
       "jobDescription": "フロント好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
-      "useMenter": true
+      "useMenter": true,
+      "skill": [
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ],
+      "positionTag": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ]
     }
   ]
 }

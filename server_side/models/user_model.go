@@ -1,12 +1,15 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/astaxie/beego/logs"
+	"github.com/jinzhu/gorm"
+)
 
 // User ...
 type User struct {
 	Model
-	LoginName         string    `gorm:"" json:"loginName"`         // ログイン名
-	LoginPassword     string    `gorm:"" json:"loginPassword"`     // ログインパスワード
 	UserName          string    `gorm:"" json:"userName"`          // ユーザー名
 	UserBirthday      time.Time `gorm:"" json:"userBirthday"`      // 生年月日
 	Bio               string    `gorm:"" json:"bio"`               // 自己紹介文
@@ -19,21 +22,19 @@ type User struct {
 }
 
 // CreateUser ...
-func CreateUser(user User) (UserID int64, err error) {
-	err = db.Create(&user).Error
+func CreateUser(tx *gorm.DB, user User) (UserID int64, err error) {
+	err = tx.Create(&user).Error
+	if err != nil {
+		logs.Error("models", err)
+		tx.Rollback()
+		return 0, err
+	}
 	return user.ID, err
 }
 
 // GetUser ...
 func GetUser(UserID int64) (user User, err error) {
 	err = db.Set("gorm:auto_preload", true).First(&user, UserID).Error
-	return user, err
-}
-
-// GetUserByLoginName ...
-func GetUserByLoginName(LoginName string) (user *User, err error) {
-	user = &User{}
-	err = db.Set("gorm:auto_preload", true).First(&user, User{LoginName: LoginName}).Error
 	return user, err
 }
 
@@ -45,18 +46,18 @@ func GetAllUsers(limit int64, offset int64) (ml []*User, err error) {
 		tx = tx.Limit(limit)
 	} else {
 		var count int64
-		tx.Model(&ml).Count(&count)
+		db.Model(&ml).Count(&count)
 		tx = tx.Limit(count)
 	}
 
-	// 関連テーブルを抽出条件に含める例
-	// tx = tx.
-	// 	Joins("JOIN roles ON roles.id = role_id").
-	// 	Joins("JOIN role_access_rights ON role_access_rights.role_id = roles.id").
-	// 	Joins("JOIN access_rights ON role_access_rights.access_right_id = access_rights.id").
-	// 	Where("access_rights.access_right_name = ?", "MOP")
-
 	err = tx.Offset(offset).Find(&ml).Commit().Error
+
+	// 関連テーブルの抽出条件設定例
+	// tx = tx.
+	// Joins("JOIN roles ON roles.id = role_id").
+	// Joins("JOIN role_access_rights ON role_access_rights.role_id = roles.id").
+	// Joins("JOIN access_rights ON role_access_rights.access_right_id = access_rights.id").
+	// Where("access_rights.access_right_name = ?", "MOP")
 
 	return ml, err
 }

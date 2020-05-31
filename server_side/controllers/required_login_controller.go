@@ -1,12 +1,8 @@
 package controllers
 
-import (
-	"github.com/astaxie/beego"
-)
-
 // RequiredLoginController ...
 type RequiredLoginController struct {
-	beego.Controller
+	BaseController
 	UserID int64
 }
 
@@ -20,14 +16,5 @@ func (r *RequiredLoginController) Prepare() {
 		// r.Ctx.ResponseWriter.WriteHeader(401) // 開発中はコメントアウト
 	} else {
 		r.UserID = userID.(int64)
-	}
-}
-
-// HandlePanic ...
-func (r RequiredLoginController) HandlePanic() {
-	if err := recover(); err != nil {
-		r.Data["json"] = err
-		r.Controller.Ctx.ResponseWriter.WriteHeader(403)
-		r.ServeJSON()
 	}
 }

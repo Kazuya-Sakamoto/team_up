@@ -55,6 +55,15 @@ func initMigrate() {
 		err := tx.AutoMigrate(
 			&User{},
 			&Job{},
+			&UserAuthInfo{},
+			&ProgramingLanguage{},
+			&ProgramingFramework{},
+			&Skill{},
+			&CommunicationTool{},
+			&PositionTag{},
+			&JobStatus{},
+			&IndividualPortfolio{},
+			&ChatMessage{},
 			// &AccessRight{},
 			// &Role{},
 

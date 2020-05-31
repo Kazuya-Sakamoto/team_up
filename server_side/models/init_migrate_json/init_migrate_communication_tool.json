@@ -1,0 +1,19 @@
+{
+  "communicationTool": [
+    {
+      "toolName": "Slack"
+    },
+    {
+      "toolName": "Skype"
+    },
+    {
+      "toolName": "ChatWork"
+    },
+    {
+      "toolName": "LINE"
+    },
+    {
+      "toolName": "Telegram"
+    }
+  ]
+}
