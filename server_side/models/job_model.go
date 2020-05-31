@@ -65,8 +65,8 @@ func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLangua
 					Where("skill_id = ?", skillID).
 					SubQuery())
 	}
-	if devStartDate.IsZero() == false {
-		tx = tx.Where("dev_start_date >= ?", devStartDate)
+	if !devStartDate.UTC().IsZero() {
+		tx = tx.Where("dev_start_date >= date(?)", devStartDate)
 	}
 	if limit != 0 {
 		tx = tx.Limit(limit)
