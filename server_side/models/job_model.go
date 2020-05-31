@@ -8,7 +8,7 @@ type Job struct {
 	JobTitle            string         `gorm:"" json:"jobTitle"`            // タイトル
 	RecruitmentNumbers  int64          `gorm:"" json:"recruitmentNumbers"`  // 募集人数
 	DevStartDate        time.Time      `gorm:"" json:"devStartDate"`        // 開発予定開始日
-	DevEndDate          time.Time      `gorm:"" json:"DevEndDate"`          // 開発予定終了日
+	DevEndDate          time.Time      `gorm:"" json:"devEndDate"`          // 開発予定終了日
 	JobStatusID         int64          `gorm:"" json:"jobStatusId"`         // 募集ステータス
 	JobDescription      string         `gorm:"" json:"jobDescription"`      // 募集内容
 	PublicationPeriod   time.Time      `gorm:"" json:"publicationPeriod"`   // 掲載期限
@@ -31,10 +31,15 @@ func GetJob(JobID int64) (job Job, err error) {
 }
 
 // GetAllJobs ...
-func GetAllJobs(limit int64, offset int64, positionTagID int64) (ml []*Job, err error) {
+func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLanguageID int64, devEndDate time.Time) (ml []*Job, err error) {
 	tx := db.Set("gorm:auto_preload", true).Begin()
 
-	// tx = tx.Where("")
+	// tx = tx.
+	// 	Where("id in (?)", 1)
+	// tx.
+	// 	Table("job_position_tags").
+	// 	Select("distinct(job_id)").
+	// 	Where("position_tag_id = ?", positionTagID))
 
 	if limit != 0 {
 		tx = tx.Limit(limit)

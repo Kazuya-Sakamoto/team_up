@@ -3,6 +3,7 @@ package controllers
 import (
 	"app/server_side/models"
 	"encoding/json"
+	"time"
 )
 
 // JobController ...
@@ -72,14 +73,17 @@ func (c *JobController) Get() {
 func (c *JobController) GetAll() {
 	defer c.HandlePanic()
 
-	var positonTagID int64
+	var positonTagID, programingLanguageID int64
 	c.Ctx.Input.Bind(&positonTagID, "positon_tag_Id")
+	c.Ctx.Input.Bind(&programingLanguageID, "programing_language_Id")
+	var devEndDate time.Time
+	c.Ctx.Input.Bind(&devEndDate, "dev_end_date")
 
 	var limit, offset int64
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	c.getHandle(models.GetAllJobs(limit, offset, positonTagID))
+	c.getHandle(models.GetAllJobs(limit, offset, positonTagID, programingLanguageID, devEndDate))
 	c.ServeJSON()
 }
 
