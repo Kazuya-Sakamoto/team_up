@@ -73,17 +73,19 @@ func (c *JobController) Get() {
 func (c *JobController) GetAll() {
 	defer c.HandlePanic()
 
-	var positonTagID, programingLanguageID int64
-	c.Ctx.Input.Bind(&positonTagID, "positon_tag_Id")
-	c.Ctx.Input.Bind(&programingLanguageID, "programing_language_Id")
-	var devEndDate time.Time
-	c.Ctx.Input.Bind(&devEndDate, "dev_end_date")
-
 	var limit, offset int64
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	c.getHandle(models.GetAllJobs(limit, offset, positonTagID, programingLanguageID, devEndDate))
+	var positionTagID, programingLanguageID, skillID int64
+	c.Ctx.Input.Bind(&positionTagID, "position_tag_id")
+	c.Ctx.Input.Bind(&programingLanguageID, "programing_language_id")
+	c.Ctx.Input.Bind(&skillID, "skill_id")
+
+	var devStartDate time.Time
+	c.Ctx.Input.Bind(&devStartDate, "dev_start_date")
+
+	c.getHandle(models.GetAllJobs(limit, offset, positionTagID, programingLanguageID, skillID, devStartDate))
 	c.ServeJSON()
 }
 

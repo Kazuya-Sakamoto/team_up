@@ -20,14 +20,10 @@ func GetProgramingLanguage(ProgramingLanguageID int64) (programingLanguage Progr
 
 // GetAllProgramingLanguages ...
 func GetAllProgramingLanguages(limit int64, offset int64) (ml []*ProgramingLanguage, err error) {
-	tx := db.Set("gorm:auto_preload", true).Begin()
+	tx := db.Begin()
 
 	if limit != 0 {
 		tx = tx.Limit(limit)
-	} else {
-		var count int64
-		tx.Model(&ml).Count(&count)
-		tx = tx.Limit(count)
 	}
 
 	err = tx.Offset(offset).Find(&ml).Commit().Error
