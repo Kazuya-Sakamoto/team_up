@@ -47,7 +47,7 @@ func (lc *SignupController) Post() {
 		lc.Data["json"] = err.Error()
 		lc.Ctx.ResponseWriter.WriteHeader(401)
 	} else {
-		// session := lc.StartSession()
+		session := lc.StartSession()
 		session.Set("userID", userID)
 		lc.Data["json"] = map[string]int64{"userId": userID.(int64)} // userIDはinterface形のためuserID.(int64)とすることでint64にCast（型変換）
 		lc.Ctx.Output.SetStatus(201)
