@@ -1,13 +1,13 @@
 package controllers
 
 import (
+	"app/server_side/models"
 	"app/server_side/services"
 	"encoding/json"
 	"log"
 
-	"golang.org/x/crypto/bcrypt"
-
 	"github.com/astaxie/beego"
+	"golang.org/x/crypto/bcrypt"
 )
 
 //LoginController Operations
@@ -36,8 +36,9 @@ func (lc *LoginController) Post() {
 	}
 
 	// id/passwordを受け取る
-	var requestUser interface{}
-	err := json.Unmarshal(lc.Ctx.Input.RequestBody, &requestUser)
+	var userAuthInfo models.UserAuthInfo
+	err := json.Unmarshal(lc.Ctx.Input.RequestBody, &userAuthInfo)
+	log.Println(userAuthInfo)
 	if err != nil {
 		lc.Ctx.ResponseWriter.WriteHeader(403)
 		lc.Data["json"] = err.Error()
@@ -45,8 +46,8 @@ func (lc *LoginController) Post() {
 		return
 	}
 
-	requestLoginName := requestUser.(map[string]interface{})["loginName"].(string)
-	requestLoginPassword := requestUser.(map[string]interface{})["loginPassword"].(string)
+	requestLoginName := userAuthInfo.LoginName
+	requestLoginPassword := userAuthInfo.LoginPassword
 	log.Println("requestLoginName", requestLoginName)
 	log.Println("requestLoginPassword", requestLoginPassword)
 

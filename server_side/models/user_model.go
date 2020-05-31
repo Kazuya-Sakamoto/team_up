@@ -10,12 +10,12 @@ import (
 // User ...
 type User struct {
 	Model
-	UserName          string    `gorm:"" json:"userName"`          // ユーザー名
-	UserBirthday      time.Time `gorm:"" json:"userBirthday"`      // 生年月日
-	Bio               string    `gorm:"" json:"bio"`               // 自己紹介文
-	GithubAccount     string    `gorm:"" json:"githubAccount"`     // Githubアカウント
-	TwitterAccount    string    `gorm:"" json:"twitterAccount"`    // Twitterアカウント
-	LearningStartDate time.Time `gorm:"" json:"learningStartDate"` // 学習開始日
+	UserName          string     `gorm:"" json:"userName"`          // ユーザー名
+	UserBirthday      *time.Time `gorm:"" json:"userBirthday"`      // 生年月日
+	Bio               string     `gorm:"" json:"bio"`               // 自己紹介文
+	GithubAccount     string     `gorm:"" json:"githubAccount"`     // Githubアカウント
+	TwitterAccount    string     `gorm:"" json:"twitterAccount"`    // Twitterアカウント
+	LearningStartDate *time.Time `gorm:"" json:"learningStartDate"` // 学習開始日
 
 	// RoleID        int64  `gorm:"" json:"roleId"`
 	// Role          *Role  `gorm:"" json:"role"`
