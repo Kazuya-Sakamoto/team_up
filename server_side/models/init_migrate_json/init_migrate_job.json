@@ -10,6 +10,7 @@
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
       "communicationToolId": 1,
       "useMenter": true,
+      "userId": 1,
       "programingLanguage": [
         {
           "id": 2
@@ -65,6 +66,7 @@
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
       "communicationToolId": 2,
       "useMenter": true,
+      "userId": 1,
       "programingLanguage": [
         {
           "id": 3
@@ -120,6 +122,7 @@
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
       "communicationToolId": 3,
       "useMenter": true,
+      "userId": 2,
       "programingLanguage": [
         {
           "id": 1
@@ -166,6 +169,7 @@
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
       "communicationToolId": 4,
       "useMenter": true,
+      "userId": 3,
       "programingLanguage": [
         {
           "id": 1

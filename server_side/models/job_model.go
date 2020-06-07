@@ -9,13 +9,15 @@ type Job struct {
 	Model
 	JobTitle             string                 `gorm:"" json:"jobTitle"`            // タイトル
 	RecruitmentNumbers   int64                  `gorm:"" json:"recruitmentNumbers"`  // 募集人数
-	DevStartDate         time.Time              `gorm:"" json:"devStartDate"`        // 開発予定開始日
-	DevEndDate           time.Time              `gorm:"" json:"devEndDate"`          // 開発予定終了日
+	DevStartDate         *time.Time             `gorm:"" json:"devStartDate"`        // 開発予定開始日
+	DevEndDate           *time.Time             `gorm:"" json:"devEndDate"`          // 開発予定終了日
 	JobStatusID          int64                  `gorm:"" json:"jobStatusId"`         // 募集ステータス
 	JobDescription       string                 `gorm:"" json:"jobDescription"`      // 募集内容
-	PublicationPeriod    time.Time              `gorm:"" json:"publicationPeriod"`   // 掲載期限
+	PublicationPeriod    *time.Time             `gorm:"" json:"publicationPeriod"`   // 掲載期限
 	CommunicationToolID  int64                  `gorm:"" json:"communicationToolId"` // コミュニケーションツール
 	UseMenter            bool                   `gorm:"" json:"useMenter"`           // メンター使用の要否
+	UserID               int64                  `gorm:"" json:"userId"`              // ユーザーID
+	User                 *User                  `gorm:"" json:"user"`                // ユーザー
 	ProgramingLanguages  []*ProgramingLanguage  `gorm:"many2many:job_programing_languages; association_autoupdate:false" json:"programingLanguage"`
 	ProgramingFrameworks []*ProgramingFramework `gorm:"many2many:job_programing_frameworks; association_autoupdate:false" json:"programingFramework"`
 	Skills               []*Skill               `gorm:"many2many:job_skills; association_autoupdate:false" json:"skill"`
