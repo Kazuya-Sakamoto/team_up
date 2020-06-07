@@ -4,10 +4,34 @@
       "jobTitle": "Rubyエンジニア募集",
       "recruitmentNumbers": 2,
       "devStartDate": "2020-04-01T00:00:00+09:00",
-      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "devEndDate": "2020-04-01T00:00:00+09:00",
+      "jobStatusId": 1,
       "jobDescription": "Ruby好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "communicationToolId": 1,
       "useMenter": true,
+      "programingLanguage": [
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ],
+      "programingFramework": [
+        {
+          "id": 2
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ],
       "skill": [
         {
           "id": 2
@@ -35,10 +59,34 @@
       "jobTitle": "Pythonエンジニア募集",
       "recruitmentNumbers": 3,
       "devStartDate": "2020-04-01T00:00:00+09:00",
-      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "devEndDate": "2020-04-01T00:00:00+09:00",
+      "jobStatusId": 2,
       "jobDescription": "Python好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "communicationToolId": 2,
       "useMenter": true,
+      "programingLanguage": [
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 5
+        }
+      ],
+      "programingFramework": [
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 5
+        }
+      ],
       "skill": [
         {
           "id": 1
@@ -66,10 +114,34 @@
       "jobTitle": "Goエンジニア募集",
       "recruitmentNumbers": 4,
       "devStartDate": "2020-04-01T00:00:00+09:00",
-      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "devEndDate": "2020-04-01T00:00:00+09:00",
+      "jobStatusId": 1,
       "jobDescription": "Go好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "communicationToolId": 3,
       "useMenter": true,
+      "programingLanguage": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 5
+        }
+      ],
+      "programingFramework": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 4
+        }
+      ],
       "skill": [
         {
           "id": 2
@@ -88,10 +160,34 @@
       "jobTitle": "フロントエンジニア募集",
       "recruitmentNumbers": 5,
       "devStartDate": "2020-04-01T00:00:00+09:00",
-      "DevEndDate": "2020-04-01T00:00:00+09:00",
+      "devEndDate": "2020-04-01T00:00:00+09:00",
+      "jobStatusId": 2,
       "jobDescription": "フロント好き集まれ！",
       "publicationPeriod": "2020-04-01T00:00:00+09:00",
+      "communicationToolId": 4,
       "useMenter": true,
+      "programingLanguage": [
+        {
+          "id": 1
+        },
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ],
+      "programingFramework": [
+        {
+          "id": 2
+        },
+        {
+          "id": 4
+        },
+        {
+          "id": 5
+        }
+      ],
       "skill": [
         {
           "id": 3
