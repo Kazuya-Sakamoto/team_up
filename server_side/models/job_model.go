@@ -36,7 +36,7 @@ func GetJob(JobID int64) (job Job, err error) {
 
 // GetAllJobs ...
 func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLanguageID int64, skillID int64, devStartDate time.Time) (ml []*Job, err error) {
-	tx := db.Begin()
+	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if positionTagID != 0 {
 		tx = tx.
