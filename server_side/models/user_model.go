@@ -16,6 +16,7 @@ type User struct {
 	GithubAccount     string     `gorm:"" json:"githubAccount"`     // Githubアカウント
 	TwitterAccount    string     `gorm:"" json:"twitterAccount"`    // Twitterアカウント
 	LearningStartDate *time.Time `gorm:"" json:"learningStartDate"` // 学習開始日
+	// Job               []*Job     `gorm:"" json:"job"`               // 案件
 
 	// RoleID        int64  `gorm:"" json:"roleId"`
 	// Role          *Role  `gorm:"" json:"role"`
