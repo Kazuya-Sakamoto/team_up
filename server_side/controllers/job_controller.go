@@ -3,7 +3,6 @@ package controllers
 import (
 	"app/server_side/models"
 	"encoding/json"
-	"log"
 	"time"
 )
 
@@ -87,9 +86,6 @@ func (c *JobController) GetAll() {
 	var devStartDate time.Time
 	c.Ctx.Input.Bind(&devStartDateStr, "dev_start_date")
 	devStartDate, _ = time.Parse("2006-01-02", devStartDateStr)
-
-	log.Println("devStartDateStr", devStartDateStr)
-	log.Println("devStartDate", devStartDate)
 
 	c.getHandle(models.GetAllJobs(limit, offset, positionTagID, programingLanguageID, skillID, devStartDate))
 	c.ServeJSON()

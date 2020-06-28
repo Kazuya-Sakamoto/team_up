@@ -14,7 +14,8 @@ type Job struct {
 	JobStatusID          int64                  `gorm:"" json:"jobStatusId"`         // 募集ステータス
 	JobDescription       string                 `gorm:"" json:"jobDescription"`      // 募集内容
 	PublicationPeriod    *time.Time             `gorm:"" json:"publicationPeriod"`   // 掲載期限
-	CommunicationToolID  int64                  `gorm:"" json:"communicationToolId"` // コミュニケーションツール
+	CommunicationToolID  int64                  `gorm:"" json:"communicationToolId"` // コミュニケーションツールID
+	CommunicationTool    *CommunicationTool     `gorm:"" json:"communicationTool"`   // ミュニケーションツール
 	UseMenter            bool                   `gorm:"" json:"useMenter"`           // メンター使用の要否
 	UserID               int64                  `gorm:"" json:"userId"`              // ユーザーID
 	User                 *User                  `gorm:"" json:"user"`                // ユーザー
