@@ -38,7 +38,7 @@ func GetJob(JobID int64) (job Job, err error) {
 }
 
 // GetAllJobs ...
-func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLanguageID int64, skillID int64, devStartDate time.Time) (ml []*Job, err error) {
+func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLanguageID int64, skillID int64, devStartDate time.Time, keyword string) (ml []*Job, err error) {
 	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if positionTagID != 0 {
@@ -70,6 +70,9 @@ func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLangua
 	}
 	if !devStartDate.UTC().IsZero() {
 		tx = tx.Where("dev_start_date >= date(?)", devStartDate)
+	}
+	if keyword != "" {
+		tx = tx.Where("job_title like ?", "%%"+keyword+"%%").Or("job_description like ?", "%%"+keyword+"%%")
 	}
 	if limit != 0 {
 		tx = tx.Limit(limit)
