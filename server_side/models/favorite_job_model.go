@@ -12,6 +12,7 @@ type FavoriteJob struct {
 	Model
 	UserID int64 `gorm:"" json:"userId"`
 	JobID  int64 `gorm:"" json:"jobId"`
+	Job    *Job  `gorm:"" json:"job"`
 }
 
 // CreateFavoriteJob ...
@@ -52,7 +53,7 @@ func GetFavoriteJob(FavoriteJobID int64) (favoriteJob FavoriteJob, err error) {
 
 // GetAllFavoriteJobs ...
 func GetAllFavoriteJobs(limit int64, offset int64, userID int64) (ml []*FavoriteJob, err error) {
-	tx := db.Begin()
+	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if userID != 0 {
 		tx = tx.Where("user_id = ?", userID)
