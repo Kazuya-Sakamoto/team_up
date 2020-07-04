@@ -76,6 +76,10 @@ func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLangua
 	}
 	if limit != 0 {
 		tx = tx.Limit(limit)
+	} else {
+		var count int64
+		tx.Model(&ml).Count(&count)
+		tx = tx.Limit(count)
 	}
 
 	err = tx.Offset(offset).Find(&ml).Commit().Error
