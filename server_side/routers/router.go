@@ -69,6 +69,11 @@ func init() {
 				&controllers.ChatMessageController{},
 			),
 		),
+		beego.NSNamespace("/favorite_job",
+		beego.NSInclude(
+			&controllers.FavoriteJobController{},
+		),
+	),
 		// beego.NSNamespace("/access_right",
 		// 	beego.NSInclude(
 		// 		&controllers.AccessRightController{},
