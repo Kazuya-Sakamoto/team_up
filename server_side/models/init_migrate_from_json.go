@@ -26,6 +26,7 @@ type Init struct {
 	IndividualPortfolio []*IndividualPortfolio `json:"individualPortfolio"`
 	ChatMessage         []*ChatMessage         `json:"chatMessage"`
 	FavoriteJob         []*FavoriteJob         `json:"favoriteJob"`
+	ApplyJob            []*ApplyJob            `json:"applyJob"`
 	// AccessRight []*AccessRight `json:"accessRight"`
 	// Role        []*Role        `json:"role"`
 }
@@ -114,6 +115,11 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 		}
 	}
 	for _, m := range init.FavoriteJob {
+		if err = tx.Create(&m).Error; err != nil {
+			return err
+		}
+	}
+	for _, m := range init.ApplyJob {
 		if err = tx.Create(&m).Error; err != nil {
 			return err
 		}
