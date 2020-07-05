@@ -4,6 +4,9 @@ import (
 	"app/server_side/models"
 
 	"github.com/jinzhu/gorm"
+
+	//BlankImportForTest
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var db *gorm.DB

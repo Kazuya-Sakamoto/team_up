@@ -1,0 +1,32 @@
+{
+  "favoriteJob": [
+    {
+      "userID": 1,
+      "jobID": 2
+    },
+    {
+      "userID": 1,
+      "jobID": 3
+    },
+    {
+      "userID": 1,
+      "jobID": 4
+    },
+    {
+      "userID": 2,
+      "jobID": 2
+    },
+    {
+      "userID": 3,
+      "jobID": 1
+    },
+    {
+      "userID": 3,
+      "jobID": 2
+    },
+    {
+      "userID": 3,
+      "jobID": 4
+    }
+  ]
+}

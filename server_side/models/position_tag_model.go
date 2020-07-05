@@ -24,6 +24,10 @@ func GetAllPositionTags(limit int64, offset int64) (ml []*PositionTag, err error
 
 	if limit != 0 {
 		tx = tx.Limit(limit)
+	} else {
+		var count int64
+		tx.Model(&ml).Count(&count)
+		tx = tx.Limit(count)
 	}
 
 	err = tx.Offset(offset).Find(&ml).Commit().Error

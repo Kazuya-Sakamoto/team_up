@@ -78,16 +78,18 @@ func (c *JobController) GetAll() {
 	c.Ctx.Input.Bind(&offset, "offset")
 
 	var positionTagID, programingLanguageID, skillID int64
+	var keyword string
 	c.Ctx.Input.Bind(&positionTagID, "position_tag_id")
 	c.Ctx.Input.Bind(&programingLanguageID, "programing_language_id")
 	c.Ctx.Input.Bind(&skillID, "skill_id")
+	c.Ctx.Input.Bind(&keyword, "keyword")
 
 	var devStartDateStr string
 	var devStartDate time.Time
 	c.Ctx.Input.Bind(&devStartDateStr, "dev_start_date")
 	devStartDate, _ = time.Parse("2006-01-02", devStartDateStr)
 
-	c.getHandle(models.GetAllJobs(limit, offset, positionTagID, programingLanguageID, skillID, devStartDate))
+	c.getHandle(models.GetAllJobs(limit, offset, positionTagID, programingLanguageID, skillID, devStartDate, keyword))
 	c.ServeJSON()
 }
 

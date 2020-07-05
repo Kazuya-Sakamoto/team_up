@@ -64,6 +64,8 @@ func initMigrate() {
 			&JobStatus{},
 			&IndividualPortfolio{},
 			&ChatMessage{},
+			&FavoriteJob{},
+			&ApplyJob{},
 			// &AccessRight{},
 			// &Role{},
 
