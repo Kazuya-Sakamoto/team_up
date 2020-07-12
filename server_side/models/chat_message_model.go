@@ -1,5 +1,11 @@
 package models
 
+import (
+	"errors"
+
+	"github.com/astaxie/beego/logs"
+)
+
 // ChatMessage ...
 type ChatMessage struct {
 	Model
@@ -21,8 +27,16 @@ func GetChatMessage(ChatMessageID int64) (chatMessage ChatMessage, err error) {
 }
 
 // GetAllChatMessages ...
-func GetAllChatMessages(limit int64, offset int64) (ml []*ChatMessage, err error) {
+func GetAllChatMessages(limit int64, offset int64, jobID int64) (ml []*ChatMessage, err error) {
 	tx := db.Begin()
+
+	if jobID != 0 {
+		tx = tx.Where("job_id = ?", jobID)
+	} else {
+		logs.Error(err)
+		tx.Rollback()
+		return ml, errors.New("jobIDが必要です。")
+	}
 
 	if limit != 0 {
 		tx = tx.Limit(limit)

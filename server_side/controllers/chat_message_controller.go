@@ -76,7 +76,10 @@ func (c *ChatMessageController) GetAll() {
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	c.getHandle(models.GetAllChatMessages(limit, offset))
+	var jobID int64
+	c.Ctx.Input.Bind(&jobID, "job_id")
+
+	c.getHandle(models.GetAllChatMessages(limit, offset, jobID))
 	c.ServeJSON()
 }
 
