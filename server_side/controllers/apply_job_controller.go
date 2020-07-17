@@ -16,7 +16,7 @@ func (c *ApplyJobController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("Get", c.Get)
 	c.Mapping("GetAll", c.GetAll)
-	// c.Mapping("Put", c.Put)
+	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
 }
 
@@ -77,37 +77,38 @@ func (c *ApplyJobController) GetAll() {
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	var userID int64
+	var userID, jobID int64
 	c.Ctx.Input.Bind(&userID, "user_id")
+	c.Ctx.Input.Bind(&jobID, "job_id")
 
-	c.getHandle(models.GetAllApplyJobs(limit, offset, userID))
+	c.getHandle(models.GetAllApplyJobs(limit, offset, userID, jobID))
 	c.ServeJSON()
 }
 
-// // Put ...
-// // @Title Put
-// // @Description update the ApplyJob
-// // @Param	ApplyJobID		path 	string	true		"The ApplyJobID you want to update"
-// // @Param	body		body 	models.ApplyJob	true		"body for ApplyJob content"
-// // @Success 200 {object} models.ApplyJob
-// // @Failure 500 :ApplyJobID is not int
-// // @router /:ApplyJobID [put]
-// func (c *ApplyJobController) Put() {
-// 	defer c.HandlePanic()
-// 	applyJobID, err := c.GetInt64(":ApplyJobID")
-// 	if err != nil {
-// 		c.parseErrorHandle(err)
-// 	} else {
-// 		var applyJob models.ApplyJob
-// 		err = json.Unmarshal(c.Ctx.Input.RequestBody, &applyJob)
-// 		if err != nil {
-// 			c.unmarshalErrorHandle(err)
-// 		} else {
-// 			c.putHandle(nil, models.UpdateApplyJob(int64(applyJobID), &applyJob))
-// 		}
-// 	}
-// 	c.ServeJSON()
-// }
+// Put ...
+// @Title Put
+// @Description update the ApplyJob
+// @Param	ApplyJobID		path 	string	true		"The ApplyJobID you want to update"
+// @Param	body		body 	models.ApplyJob	true		"body for ApplyJob content"
+// @Success 200 {object} models.ApplyJob
+// @Failure 500 :ApplyJobID is not int
+// @router /:ApplyJobID [put]
+func (c *ApplyJobController) Put() {
+	defer c.HandlePanic()
+	applyJobID, err := c.GetInt64(":ApplyJobID")
+	if err != nil {
+		c.parseErrorHandle(err)
+	} else {
+		var applyJob models.ApplyJob
+		err = json.Unmarshal(c.Ctx.Input.RequestBody, &applyJob)
+		if err != nil {
+			c.unmarshalErrorHandle(err)
+		} else {
+			c.putHandle(nil, models.UpdateApplyJob(int64(applyJobID), &applyJob))
+		}
+	}
+	c.ServeJSON()
+}
 
 //Delete ApplyJob
 // @Title Delete
