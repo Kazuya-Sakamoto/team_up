@@ -1,0 +1,13 @@
+{
+  "applyStatus": [
+    {
+      "statusName": "応募"
+    },
+    {
+      "statusName": "参加"
+    },
+    {
+      "statusName": "残念"
+    }
+  ]
+}

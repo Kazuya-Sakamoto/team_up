@@ -66,6 +66,7 @@ func initMigrate() {
 			&ChatMessage{},
 			&FavoriteJob{},
 			&ApplyJob{},
+			&ApplyStatus{},
 			// &AccessRight{},
 			// &Role{},
 

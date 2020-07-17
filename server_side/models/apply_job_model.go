@@ -10,9 +10,18 @@ import (
 // ApplyJob ...
 type ApplyJob struct {
 	Model
-	UserID int64 `gorm:"" json:"userId"`
-	JobID  int64 `gorm:"" json:"jobId"`
-	Job    *Job  `gorm:"" json:"job"`
+	UserID        int64        `gorm:"" json:"userId"`
+	User          *User        `gorm:"" json:"user"`
+	JobID         int64        `gorm:"" json:"jobId"`
+	Job           *Job         `gorm:"" json:"job"`
+	ApplyStatusID int64        `gorm:"" json:"applyStatusId"`
+	ApplyStatus   *ApplyStatus `gorm:"" json:"applyStatus"`
+}
+
+// ApplyStatus ...
+type ApplyStatus struct {
+	Model
+	StatusName string `gorm:"" json:"statusName"`
 }
 
 // CreateApplyJob ...
