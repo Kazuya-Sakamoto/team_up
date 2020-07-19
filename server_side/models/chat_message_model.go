@@ -30,7 +30,7 @@ func GetChatMessage(ChatMessageID int64) (chatMessage ChatMessage, err error) {
 
 // GetAllChatMessages ...
 func GetAllChatMessages(limit int64, offset int64, jobID int64) (ml []*ChatMessage, err error) {
-	tx := db.Begin()
+	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if jobID != 0 {
 		tx = tx.Where("job_id = ?", jobID)
