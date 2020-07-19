@@ -2,27 +2,33 @@
   "applyJob": [
     {
       "userID": 1,
-      "jobID": 2
+      "jobID": 2,
+      "applyStatusID": 1
     },
     {
       "userID": 1,
-      "jobID": 3
+      "jobID": 3,
+      "applyStatusID": 1
     },
     {
       "userID": 2,
-      "jobID": 3
+      "jobID": 3,
+      "applyStatusID": 1
     },
     {
       "userID": 3,
-      "jobID": 1
+      "jobID": 1,
+      "applyStatusID": 2
     },
     {
       "userID": 4,
-      "jobID": 2
+      "jobID": 2,
+      "applyStatusID": 2
     },
     {
       "userID": 4,
-      "jobID": 4
+      "jobID": 4,
+      "applyStatusID": 3
     }
   ]
 }

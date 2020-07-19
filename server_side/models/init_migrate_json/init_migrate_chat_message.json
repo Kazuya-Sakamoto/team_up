@@ -1,0 +1,14 @@
+{
+  "chatMessage": [
+    {
+      "message": "メッセージ1",
+      "userID": 3,
+      "jobID": 1
+    },
+    {
+      "message": "メッセージメッセージ",
+      "userID": 4,
+      "jobID": 2
+    }
+  ]
+}
