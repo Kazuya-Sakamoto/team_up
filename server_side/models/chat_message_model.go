@@ -11,7 +11,9 @@ type ChatMessage struct {
 	Model
 	Message string `gorm:"" json:"message"`
 	JobID   int64  `gorm:"" json:"jobId"`
+	Job     *Job   `gorm:"" json:"job"`
 	UserID  int64  `gorm:"" json:"userId"`
+	User    *User  `gorm:"" json:"user"`
 }
 
 // CreateChatMessage ...
