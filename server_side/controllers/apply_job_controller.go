@@ -92,21 +92,17 @@ func (c *ApplyJobController) GetAll() {
 // @Param	body		body 	models.ApplyJob	true		"body for ApplyJob content"
 // @Success 200 {object} models.ApplyJob
 // @Failure 500 :ApplyJobID is not int
-// @router /:ApplyJobID [put]
+// @router / [put]
 func (c *ApplyJobController) Put() {
 	defer c.HandlePanic()
-	applyJobID, err := c.GetInt64(":ApplyJobID")
+	var applyJob models.ApplyJob
+	err := json.Unmarshal(c.Ctx.Input.RequestBody, &applyJob)
 	if err != nil {
-		c.parseErrorHandle(err)
+		c.unmarshalErrorHandle(err)
 	} else {
-		var applyJob models.ApplyJob
-		err = json.Unmarshal(c.Ctx.Input.RequestBody, &applyJob)
-		if err != nil {
-			c.unmarshalErrorHandle(err)
-		} else {
-			c.putHandle(nil, models.UpdateApplyJob(int64(applyJobID), &applyJob))
-		}
+		c.putHandle(nil, services.PutApplyJobWithUserIDAndJobID(applyJob))
 	}
+
 	c.ServeJSON()
 }
 
