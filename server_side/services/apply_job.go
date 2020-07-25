@@ -25,6 +25,31 @@ func PostApplyJob(applyJob models.ApplyJob) (applyJobID int64, err error) {
 	return
 }
 
+// PutApplyJobWithUserIDAndJobID ...
+func PutApplyJobWithUserIDAndJobID(applyJob models.ApplyJob) (err error) {
+	tx := db.Begin()
+	var currentApplyJobs []*models.ApplyJob
+	currentApplyJobs, err = models.FindApplyJobWithUserIDAndJobID(tx, applyJob.UserID, applyJob.JobID)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if len(currentApplyJobs) != 0 {
+		currentApplyJob := currentApplyJobs[0]
+		err = models.UpdateApplyJob(tx, currentApplyJob.ID, applyJob)
+		if err != nil {
+			logs.Error(err)
+			return
+		}
+	} else {
+		tx.Rollback()
+		return errors.New("対象の案件がありません。")
+	}
+
+	err = tx.Commit().Error
+	return
+}
+
 // DeleteApplyJobWithUserIDAndJobID ...
 func DeleteApplyJobWithUserIDAndJobID(applyJob models.ApplyJob) (err error) {
 	tx := db.Begin()

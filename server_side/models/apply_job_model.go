@@ -90,7 +90,7 @@ func GetAllApplyJobs(limit int64, offset int64, userID int64, jobID int64) (ml [
 }
 
 // UpdateApplyJob ...
-func UpdateApplyJob(ApplyJobID int64, applyJob *ApplyJob) (err error) {
+func UpdateApplyJob(tx *gorm.DB, ApplyJobID int64, applyJob ApplyJob) (err error) {
 	err = db.Model(&ApplyJob{Model: Model{ID: ApplyJobID}}).Update(applyJob).Error
 	return err
 }
