@@ -61,7 +61,7 @@ func GetApplyJob(ApplyJobID int64) (applyJob ApplyJob, err error) {
 }
 
 // GetAllApplyJobs ...
-func GetAllApplyJobs(limit int64, offset int64, userID int64, jobID int64) (ml []*ApplyJob, err error) {
+func GetAllApplyJobs(limit int64, offset int64, userID int64, jobID int64, applyStatusID int64) (ml []*ApplyJob, err error) {
 	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if userID != 0 {
@@ -69,6 +69,9 @@ func GetAllApplyJobs(limit int64, offset int64, userID int64, jobID int64) (ml [
 	}
 	if jobID != 0 {
 		tx = tx.Where("job_id = ?", jobID)
+	}
+	if applyStatusID != 0 {
+		tx = tx.Where("apply_status_id = ?", applyStatusID)
 	}
 	if userID == 0 && jobID == 0 {
 		logs.Error(err)
