@@ -77,11 +77,12 @@ func (c *ApplyJobController) GetAll() {
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	var userID, jobID int64
+	var userID, jobID, applyStatusID int64
 	c.Ctx.Input.Bind(&userID, "user_id")
 	c.Ctx.Input.Bind(&jobID, "job_id")
+	c.Ctx.Input.Bind(&applyStatusID, "apply_status_id")
 
-	c.getHandle(models.GetAllApplyJobs(limit, offset, userID, jobID))
+	c.getHandle(models.GetAllApplyJobs(limit, offset, userID, jobID, applyStatusID))
 	c.ServeJSON()
 }
 
