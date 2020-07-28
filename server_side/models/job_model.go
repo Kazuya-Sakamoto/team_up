@@ -2,6 +2,9 @@ package models
 
 import (
 	"time"
+
+	"github.com/astaxie/beego/logs"
+	"github.com/jinzhu/gorm"
 )
 
 // Job ...
@@ -26,8 +29,13 @@ type Job struct {
 }
 
 // CreateJob ...
-func CreateJob(job Job) (JobID int64, err error) {
-	err = db.Create(&job).Error
+func CreateJob(tx *gorm.DB, job Job) (JobID int64, err error) {
+	err = tx.Create(&job).Error
+	if err != nil {
+		logs.Error(err)
+		tx.Rollback()
+		return
+	}
 	return job.ID, err
 }
 

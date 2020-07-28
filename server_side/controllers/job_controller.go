@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"app/server_side/models"
+	"app/server_side/services"
 	"encoding/json"
 	"time"
 )
@@ -36,7 +37,7 @@ func (c *JobController) Post() {
 		c.ServeJSON()
 		return
 	}
-	c.postHandle(models.CreateJob(job))
+	c.postHandle(services.PostJob(job))
 	c.ServeJSON()
 }
 
