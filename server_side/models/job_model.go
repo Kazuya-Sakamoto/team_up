@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"time"
 
 	"github.com/astaxie/beego/logs"
@@ -42,6 +43,25 @@ func CreateJob(tx *gorm.DB, job Job) (JobID int64, err error) {
 // GetJob ...
 func GetJob(JobID int64) (job Job, err error) {
 	err = db.Set("gorm:auto_preload", true).First(&job, JobID).Error
+	return job, err
+}
+
+// FindJobWithIDAndUserID ...
+func FindJobWithIDAndUserID(tx *gorm.DB, jobID int64, userID int64) (job []*Job, err error) {
+	if userID != 0 && jobID != 0 {
+		tx = tx.Where("user_id = ?", userID).Where("id = ?", jobID)
+	} else {
+		logs.Error(err)
+		tx.Rollback()
+		return job, errors.New("userIDもしくはjobIDが不足しています。")
+	}
+
+	err = tx.Find(&job).Error
+	if err != nil {
+		logs.Error(err)
+		tx.Rollback()
+		return
+	}
 	return job, err
 }
 

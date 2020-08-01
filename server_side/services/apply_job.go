@@ -12,9 +12,23 @@ func PostApplyJob(applyJob models.ApplyJob) (applyJobID int64, err error) {
 	tx := db.Begin()
 	var currentApplyJob []*models.ApplyJob
 	currentApplyJob, err = models.FindApplyJobWithUserIDAndJobID(tx, applyJob.UserID, applyJob.JobID)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
 	if len(currentApplyJob) != 0 {
 		tx.Rollback()
 		return 0, errors.New("この案件はすでに応募済みです。")
+	}
+	var currentJob []*models.Job
+	currentJob, err = models.FindJobWithIDAndUserID(tx, applyJob.JobID, applyJob.UserID)
+	if err != nil {
+		logs.Error(err)
+		return
+	}
+	if len(currentJob) != 0 {
+		tx.Rollback()
+		return 0, errors.New("自分の案件に応募することはできません。")
 	}
 	applyJobID, err = models.CreateApplyJob(tx, applyJob)
 	if err != nil {
