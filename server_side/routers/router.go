@@ -44,16 +44,16 @@ func init() {
 				&controllers.SkillController{},
 			),
 		),
-		beego.NSNamespace("/communication_tool",
-			beego.NSInclude(
-				&controllers.SkillController{},
-			),
-		),
-		beego.NSNamespace("/position_tag",
-			beego.NSInclude(
-				&controllers.PositionTagController{},
-			),
-		),
+		// beego.NSNamespace("/communication_tool",
+		// 	beego.NSInclude(
+		// 		&controllers.SkillController{},
+		// 	),
+		// ),
+		// beego.NSNamespace("/position_tag",
+		// 	beego.NSInclude(
+		// 		&controllers.PositionTagController{},
+		// 	),
+		// ),
 		beego.NSNamespace("/job_status",
 			beego.NSInclude(
 				&controllers.JobStatusController{},
