@@ -20,8 +20,8 @@ type Init struct {
 	ProgramingLanguage  []*ProgramingLanguage  `json:"programingLanguage"`
 	ProgramingFramework []*ProgramingFramework `json:"programingFramework"`
 	Skill               []*Skill               `json:"skill"`
-	CommunicationTool   []*CommunicationTool   `json:"communicationTool"`
-	PositionTag         []*PositionTag         `json:"positionTag"`
+	// CommunicationTool   []*CommunicationTool   `json:"communicationTool"`
+	// PositionTag         []*PositionTag         `json:"positionTag"`
 	JobStatus           []*JobStatus           `json:"jobStatus"`
 	IndividualPortfolio []*IndividualPortfolio `json:"individualPortfolio"`
 	ChatMessage         []*ChatMessage         `json:"chatMessage"`
@@ -90,16 +90,16 @@ func initMigrateFromJSON(tx *gorm.DB, subPath, jsonFileName string) (err error) 
 			return err
 		}
 	}
-	for _, m := range init.CommunicationTool {
-		if err = tx.Create(&m).Error; err != nil {
-			return err
-		}
-	}
-	for _, m := range init.PositionTag {
-		if err = tx.Create(&m).Error; err != nil {
-			return err
-		}
-	}
+	// for _, m := range init.CommunicationTool {
+	// 	if err = tx.Create(&m).Error; err != nil {
+	// 		return err
+	// 	}
+	// }
+	// for _, m := range init.PositionTag {
+	// 	if err = tx.Create(&m).Error; err != nil {
+	// 		return err
+	// 	}
+	// }
 	for _, m := range init.JobStatus {
 		if err = tx.Create(&m).Error; err != nil {
 			return err
