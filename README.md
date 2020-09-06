@@ -9,6 +9,9 @@
 5．`cd server_side`で server_side ディレクトリへ移動  
 6．`bee run`でアプリケーションを起動
 
+【20200906_追記】   
+・docker-compose up -d 実行時に、go get "github.com/beego/bee" のエラーが出る場合は、Dofkerfile の RUN go get "github.com/beego/bee" をコメントアウトし、docker-compose up -d を実行する。また、bee run の代わりにgo run main.go コマンドを使ってアプリケーションを起動する。
+
 ## テストユーザー
 
 ＜テストユーザー ① ＞  
