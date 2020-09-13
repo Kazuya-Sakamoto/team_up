@@ -1,5 +1,7 @@
 package models
 
+import "github.com/jinzhu/gorm"
+
 // Skill ...
 type Skill struct {
 	Model
@@ -45,4 +47,10 @@ func UpdateSkill(SkillID int64, skill *Skill) (err error) {
 func DeleteSkill(SkillID int64) (err error) {
 	err = db.Delete(&Skill{Model: Model{ID: SkillID}}).Error
 	return err
+}
+
+// CountCreateSkills ...
+func CountCreateSkills(tx *gorm.DB, SKs []*Skill) (count int) {
+	count = len(SKs)
+	return count
 }
