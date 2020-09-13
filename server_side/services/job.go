@@ -40,7 +40,7 @@ func PostJob(job models.Job) (JobID int64, err error) {
 	applyJob := models.ApplyJob{
 		UserID:        job.UserID,
 		JobID:         JobID,
-		ApplyStatusID: 2,
+		ApplyStatusID: 4,
 	}
 	_, err = models.CreateApplyJob(tx, applyJob)
 	if err != nil {
