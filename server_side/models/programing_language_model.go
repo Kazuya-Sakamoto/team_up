@@ -1,5 +1,7 @@
 package models
 
+import "github.com/jinzhu/gorm"
+
 // ProgramingLanguage ...
 type ProgramingLanguage struct {
 	Model
@@ -45,4 +47,10 @@ func UpdateProgramingLanguage(ProgramingLanguageID int64, programingLanguage *Pr
 func DeleteProgramingLanguage(ProgramingLanguageID int64) (err error) {
 	err = db.Delete(&ProgramingLanguage{Model: Model{ID: ProgramingLanguageID}}).Error
 	return err
+}
+
+// CountCreateProgramingLanguages ...
+func CountCreateProgramingLanguages(tx *gorm.DB, PLs []*ProgramingLanguage) (count int) {
+	count = len(PLs)
+	return count
 }

@@ -1,5 +1,7 @@
 package models
 
+import "github.com/jinzhu/gorm"
+
 // ProgramingFramework ...
 type ProgramingFramework struct {
 	Model
@@ -45,4 +47,10 @@ func UpdateProgramingFramework(ProgramingFrameworkID int64, programingFramework 
 func DeleteProgramingFramework(ProgramingFrameworkID int64) (err error) {
 	err = db.Delete(&ProgramingFramework{Model: Model{ID: ProgramingFrameworkID}}).Error
 	return err
+}
+
+// CountCreateProgramingFrameworks ...
+func CountCreateProgramingFrameworks(tx *gorm.DB, PFs []*ProgramingFramework) (count int) {
+	count = len(PFs)
+	return count
 }

@@ -25,7 +25,7 @@ func main() {
 		AllowAllOrigins: true,
 		// AllowOrigins:     []string{"https://*.foo.com"},
 		AllowMethods:     []string{"GET", "PUT", "POST", "DELETE", "OPTIONS"},
-		AllowHeaders:     []string{"Origin", "Content-Type"}, // Getの場合は"Origin"のみでOK。Postの場合は"Content-Type"も必要
+		AllowHeaders:     []string{"Origin", "Access-Control-Allow-Origin", "Content-Type"}, // Getの場合は"Origin"のみでOK。Postの場合は"Content-Type"も必要
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
