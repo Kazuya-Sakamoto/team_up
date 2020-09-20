@@ -11,6 +11,7 @@ import (
 type FavoriteJob struct {
 	Model
 	UserID int64 `gorm:"" json:"userId"`
+	User   *User `gorm:"" json:"user"`
 	JobID  int64 `gorm:"" json:"jobId"`
 	Job    *Job  `gorm:"" json:"job"`
 }
@@ -97,5 +98,3 @@ func DeleteFavoriteJob(tx *gorm.DB, userID int64, jobID int64) (err error) {
 	}
 	return err
 }
-
-// テスト
