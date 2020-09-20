@@ -52,15 +52,15 @@ func GetFavoriteJob(FavoriteJobID int64) (favoriteJob FavoriteJob, err error) {
 }
 
 // GetAllFavoriteJobs ...
-func GetAllFavoriteJobs(limit int64, offset int64, userID int64) (ml []*FavoriteJob, err error) {
+func GetAllFavoriteJobs(limit int64, offset int64, userID int64, jobID int64) (ml []*FavoriteJob, err error) {
 	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if userID != 0 {
 		tx = tx.Where("user_id = ?", userID)
-	} else {
-		logs.Error(err)
-		tx.Rollback()
-		return ml, errors.New("userIDが必要です。")
+	}
+
+	if jobID != 0 {
+		tx = tx.Where("job_id = ?", jobID)
 	}
 
 	if limit != 0 {
@@ -72,6 +72,11 @@ func GetAllFavoriteJobs(limit int64, offset int64, userID int64) (ml []*Favorite
 	}
 
 	err = tx.Offset(offset).Find(&ml).Commit().Error
+	if err != nil {
+		logs.Error(err)
+		tx.Rollback()
+		return ml, err
+	}
 
 	return ml, err
 }
