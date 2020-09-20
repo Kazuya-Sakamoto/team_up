@@ -77,10 +77,11 @@ func (c *FavoriteJobController) GetAll() {
 	c.Ctx.Input.Bind(&limit, "limit")
 	c.Ctx.Input.Bind(&offset, "offset")
 
-	var userID int64
+	var userID, jobID int64
 	c.Ctx.Input.Bind(&userID, "user_id")
+	c.Ctx.Input.Bind(&jobID, "job_id")
 
-	c.getHandle(models.GetAllFavoriteJobs(limit, offset, userID))
+	c.getHandle(models.GetAllFavoriteJobs(limit, offset, userID, jobID))
 	c.ServeJSON()
 }
 

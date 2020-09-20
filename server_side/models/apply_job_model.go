@@ -108,3 +108,5 @@ func DeleteApplyJob(tx *gorm.DB, userID int64, jobID int64) (err error) {
 	}
 	return err
 }
+
+// テスト
