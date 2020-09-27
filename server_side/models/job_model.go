@@ -66,7 +66,7 @@ func FindJobWithIDAndUserID(tx *gorm.DB, jobID int64, userID int64) (job []*Job,
 }
 
 // GetAllJobs ...
-func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLanguageIDs []int64, skillID int64, devStartDate time.Time, keyword string, userID int64) (ml []*Job, err error) {
+func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLanguageIDs []int64, skillIDs []int64, programingFrameworkIDs []int64, devStartDate time.Time, keyword string, userID int64) (ml []*Job, err error) {
 	tx := db.Set("gorm:auto_preload", true).Begin()
 
 	if positionTagID != 0 {
@@ -87,13 +87,22 @@ func GetAllJobs(limit int64, offset int64, positionTagID int64, programingLangua
 					Where("programing_language_id IN (?)", programingLanguageIDs).
 					SubQuery())
 	}
-	if skillID != 0 {
+	if len(skillIDs) != 0 {
 		tx = tx.
 			Where("id in (?)",
 				tx.
 					Table("job_skills").
 					Select("distinct(job_id)").
-					Where("skill_id = ?", skillID).
+					Where("skill_id IN (?)", skillIDs).
+					SubQuery())
+	}
+	if len(programingFrameworkIDs) != 0 {
+		tx = tx.
+			Where("id in (?)",
+				tx.
+					Table("job_programing_frameworks").
+					Select("distinct(job_id)").
+					Where("programing_framework_id IN (?)", programingFrameworkIDs).
 					SubQuery())
 	}
 	if !devStartDate.UTC().IsZero() {
